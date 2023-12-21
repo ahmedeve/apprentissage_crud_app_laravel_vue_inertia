@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -34,5 +35,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/doctors', [DoctorController::class, 'index'])->name('doctors.index');
+Route::get('/doctors/create', [DoctorController::class, 'create'])->name('doctors.create');
+Route::get('doctors/{doctor_id}', [DoctorController::class, 'show'])->name('doctors.show');
+Route::post('/doctors', [DoctorController::class, 'store'])->name('doctors.store');
 
 require __DIR__.'/auth.php';
