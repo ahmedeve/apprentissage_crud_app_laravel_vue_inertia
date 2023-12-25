@@ -44,7 +44,7 @@ Route::post('/register/doctor', [DoctorController::class, 'store'])->name('docto
 
 
 
-Route::post('/register/patient', [PatientController::class, 'store'])->name('patient.store');
+Route::post('/register/patient', [PatientController::class, 'store'])->name('patients.store');
 
 require __DIR__.'/auth.php';
 require __DIR__.'/user.php';

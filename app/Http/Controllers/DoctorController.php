@@ -36,17 +36,9 @@ class DoctorController extends Controller
             'specialization' => 'string|max:255'
             ]);
         $data['user_id'] = $user->id;
-        $doctor = [
-            'user_id' => $user->id,
-            'name' => $data['name'],
-            'specialization' => $data['specialization'],
-            ];
-        Doctor::create($data);
+        $doctor = Doctor::create($data);
         return Inertia::render('Doctor/Show', [
                                 'doctor' => $doctor,
-                                'user' => $user,
-                                'request' => $request,
-                                'data' => $data
                                 ]);
     }
 }
