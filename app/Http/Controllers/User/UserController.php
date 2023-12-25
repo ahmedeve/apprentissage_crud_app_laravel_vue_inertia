@@ -1,39 +1,28 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
-use Inertia\Response;
 
-class RegisteredUserController extends Controller
+class UserController extends Controller
 {
-    /**
-     * Display the registration view.
-     */
-    public function create(): Response
+    public function create(string $user_type)
     {
-        return Inertia::render('Auth/Register', [
-            'registerDoctor' => true,
-            'registerPatient' => false
+        return Inertia::render('User/Create', [
+            'registerDoctor' => ($user_type === 'doctor'),
+            'registerPatient' => ($user_type === 'patient')
             ]
         );
     }
 
-    /**
-     * Handle an incoming registration request.
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    public function store(Request $request): RedirectResponse
+    public static function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -50,7 +39,5 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
-
-        return redirect(RouteServiceProvider::HOME);
     }
 }

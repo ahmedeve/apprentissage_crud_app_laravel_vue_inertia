@@ -42,3 +42,4 @@ Route::get('doctors/{doctor_id}', [DoctorController::class, 'show'])->name('doct
 Route::post('/doctors', [DoctorController::class, 'store'])->name('doctors.store');
 
 require __DIR__.'/auth.php';
+require __DIR__.'/user.php';

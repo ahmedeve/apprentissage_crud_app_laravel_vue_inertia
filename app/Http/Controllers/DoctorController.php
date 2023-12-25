@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\User\UserController;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -28,6 +29,7 @@ class DoctorController extends Controller
 
     public function store(Request $request )
     {
+        UserController::store($request);
         $data = $request->validate([
             'name' => 'string|max:255',
             'specialization' => 'string|max:255'
