@@ -137,6 +137,18 @@ const userForm = useForm(user_type.registerDoctor ?
                     'password': '',
                     'password_confirmation': ''
                 } : {} );
+function submit () {
+    if (user_type.registerDoctor){
+        userForm.post(route('doctors.store'), {
+            onFinish: () => userForm.reset('password', 'password_confirmation'),
+        });
+    }
+    if (user_type.registerPatient){
+        userForm.post(route('patients.store'), {
+            onFinish: () => userForm.reset('password', 'password_confirmation'),
+        });
+    }
+}
 
 onMounted(() => {
 })

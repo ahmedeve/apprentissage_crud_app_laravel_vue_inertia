@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Doctor extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'specialization'];
+    protected $fillable = ['user_id', 'name', 'specialization'];
 
     public function patient()
     {

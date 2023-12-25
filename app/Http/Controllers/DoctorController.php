@@ -6,6 +6,7 @@ use App\Http\Controllers\User\UserController;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
 
 class DoctorController extends Controller
 {
@@ -29,12 +30,23 @@ class DoctorController extends Controller
 
     public function store(Request $request )
     {
-        UserController::store($request);
+        $user = UserController::store($request);
         $data = $request->validate([
             'name' => 'string|max:255',
             'specialization' => 'string|max:255'
             ]);
+        $data['user_id'] = $user->id;
+        $doctor = [
+            'user_id' => $user->id,
+            'name' => $data['name'],
+            'specialization' => $data['specialization'],
+            ];
         Doctor::create($data);
-        return Inertia::location(route('doctors.index'));
+        return Inertia::render('Doctor/Show', [
+                                'doctor' => $doctor,
+                                'user' => $user,
+                                'request' => $request,
+                                'data' => $data
+                                ]);
     }
 }

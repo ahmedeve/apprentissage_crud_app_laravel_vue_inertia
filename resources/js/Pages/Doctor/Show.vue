@@ -1,8 +1,12 @@
 <template>
-    <h1>{{ doctor.name }}</h1>
-    <h1>{{ doctor.specialization }}</h1>
+    <h1>{{ doctor.doctor }}</h1>
+    <h1>{{ doctor.user }}</h1>
+    <h1>{{ doctor.request }}</h1>
+    <h1>{{ doctor.data }}</h1>
 </template>
 
 <script setup>
-    defineProps({ doctor: Object });
+const doctor = defineProps({
+        doctor: Object,
+    });
 </script>
