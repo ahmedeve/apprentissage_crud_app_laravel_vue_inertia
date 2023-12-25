@@ -50,25 +50,6 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.name" />
             </div>
 
-            <div>
-                <InputLabel for="specialization" value="Specialization" />
-
-                <TextInput
-                    id="specialization"
-                    type="text"
-                    class="mt-1 block w-full"
-                    v-model="form.specialization"
-                    required
-                    autofocus
-                    autocomplete="name"
-                />
-
-                <InputError
-                    class="mt-2"
-                    :message="form.errors.specialization"
-                />
-            </div>
-
             <div class="mt-4">
                 <InputLabel for="email" value="Email" />
 
