@@ -10,13 +10,13 @@ class Patient extends Model
     use HasFactory;
     protected $fillable = ['user_id', 'name'];
 
-    public function doctor()
+    public function doctors()
     {
         return $this->belongsToMany(Doctor::class);
     }
 
     public function user()
     {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 }

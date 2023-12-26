@@ -2,11 +2,10 @@
 
 namespace App\Models;
 
-use App\Models\Doctor;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Service extends Model
+class Blog extends Model
 {
     use HasFactory;
 
