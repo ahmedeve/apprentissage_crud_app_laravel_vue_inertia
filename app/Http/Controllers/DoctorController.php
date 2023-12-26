@@ -37,6 +37,7 @@ class DoctorController extends Controller
             ]);
         $data['user_id'] = $user->id;
         $doctor = Doctor::create($data);
+        Auth::login($user);
         return Inertia::render('Doctor/Show', [
                                 'doctor' => $doctor,
                                 ]);

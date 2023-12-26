@@ -6,6 +6,7 @@ use App\Http\Controllers\User\UserController;
 use App\Models\Patient;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
 
 class PatientController extends Controller
 {
@@ -33,6 +34,7 @@ class PatientController extends Controller
             ]);
         $data['user_id'] = $user->id;
         $patient = Patient::create($data);
+        Auth::login($user);
         return Inertia::render('Patient/Show', [
                                 'patient' => $patient,
                                 ]);

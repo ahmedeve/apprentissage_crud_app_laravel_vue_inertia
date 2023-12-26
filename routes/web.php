@@ -37,14 +37,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/doctors', [DoctorController::class, 'index'])->name('doctors.index');
-Route::get('/doctors/create', [DoctorController::class, 'create'])->name('doctors.create');
-Route::get('/doctors/{doctor_id}', [DoctorController::class, 'show'])->name('doctors.show');
-Route::post('/register/doctor', [DoctorController::class, 'store'])->name('doctors.store');
 
 
 
 Route::post('/register/patient', [PatientController::class, 'store'])->name('patients.store');
 
 require __DIR__.'/auth.php';
-require __DIR__.'/user.php';
+require __DIR__.'/users.php';
+require __DIR__.'/doctors.php';
+require __DIR__.'/patients.php';
+require __DIR__.'/appointements.php';
+require __DIR__.'/services.php';
+

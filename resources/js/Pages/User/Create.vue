@@ -112,7 +112,7 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import { ref, reactive, onMounted, computed} from 'vue';
+import { onMounted } from 'vue';
 import { useForm, Link} from '@inertiajs/vue3';
 const user_type = defineProps({
     registerDoctor: {

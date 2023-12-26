@@ -1,9 +1,9 @@
 <template>
-    <h1>{{ doctor }}</h1>
+    <h1>{{ patient }}</h1>
 </template>
 
 <script setup>
 const doctor = defineProps({
-        doctor: Object,
+        patient: Object,
     });
 </script>
